@@ -11,4 +11,11 @@
     <li>ასევე კარგი იქნება თუ გასტილავთ odd და even ელემენტებს</li>
   </ol>
   <!-- TODO: წაშალეთ ეს კომენტარი და ამის ადგილას ჩასვით თქვენი კომპონენტები -->
+  <bg-game-control (countNumbers)="onCountNumbers($event)" ></bg-game-control>
+  <div *ngFor="let num of numbers">
+    <bg-odd [num]="num"></bg-odd>
+    <bg-even [num]="num"></bg-even>
+  </div>
+
+
 </div>
