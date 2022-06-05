@@ -11,3 +11,4 @@ export class CounterService {
     setTimeout(() => this.showCounter = false, 2000);
   }
 }
+
