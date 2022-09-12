@@ -1,0 +1,20 @@
+<div class="ui-form">
+  <label>Enter Username </label>
+  <input type="text" [(ngModel)]="username">
+</div>
+<p>{{ username }}</p>
+<button [disabled]="!username" (click)="onClickDeleteButton();">Delete</button>
+
+<hr>
+
+<button (click)="onClickShowButton();">Click me</button>
+<p [hidden]="!showParagraph">Hide me</p>
+
+<p
+  *ngFor="let click of clicks"
+  [ngStyle]="{ backgroundColor: click >= 5 ? 'blue' : 'transparent' }"
+  [ngClass]="{ paragraphTextColor : click >= 7 }">
+  You clicked me {{ click }} times
+</p>
+
+
