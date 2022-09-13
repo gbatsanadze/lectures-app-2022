@@ -7,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShellComponent implements OnInit {
 
-  userName = '';
+  clickCheck = true;
+  userName = 'John';
+  userName2 = '';
+  count = 0;
+  txtColor = 'transparent';
 
-  onInput(event: Event) {
+  onInput(txt) {
+    this.userName = (txt.target).value;
+  }
 
+  onClickEvent() {
+    this.clickCheck = !this.clickCheck;
+    this.count++;
+    if (this.count >= 5) {
+      this.txtColor = 'blue';
+    }
   }
 
   constructor() { }
