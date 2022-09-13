@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShellComponent implements OnInit {
 
+  userName = '';
+
+  onInput(event: Event) {
+
+  }
+
   constructor() { }
 
   ngOnInit(): void {
