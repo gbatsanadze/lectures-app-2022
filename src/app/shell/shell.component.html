@@ -1,0 +1,30 @@
+<p>shell works!</p>
+<!-- <input type="text"  [(ngModel)]="username">
+<input type="text" >
+<p>username is {{username}}</p>
+<button [disabled]="checkUsername"> Button </button>
+
+
+this.usernameExists = {{username.length > 0, ? true, false}};
+
+-->
+
+
+<div class = "ui form">
+  <div class = "field" >
+    <label >იუზერი</label>
+    <input type="text"  (input)="onInput($event)"  [ngStyle]="{backgroundColor: getColor()}"
+           [ngClass]="{testclass: clickCnt2 > 7}">
+    <p [ngStyle]="{backgroundColor: getColor()}"
+       [ngClass]="{testclass: clickCnt2 > 7}"> იუზერი {{username}} </p>
+  </div>
+</div>
+
+<button [disabled]="usernameExists"  (click)="onClick()" > ღილაკი </button>
+<p>{{clickCnt}}</p>
+
+<hr>
+<button (click) ="onClick2()"> გამოჩენა </button>
+<p  *ngIf="click2">გამაქრე</p>
+<p>{{clickCnt2}}</p>
+
