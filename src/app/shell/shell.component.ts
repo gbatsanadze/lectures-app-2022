@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ShellComponent implements OnInit {
 
   clickCheck = true;
-  userName = 'John';
+  userName = '';
   userName2 = '';
   count = 0;
   txtColor = 'transparent';
