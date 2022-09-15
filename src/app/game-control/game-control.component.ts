@@ -1,4 +1,9 @@
+<<<<<<< 1a259d2ea2f4dc0a4c34236dcff12789da0b82ff
 import { Component, OnInit } from '@angular/core';
+=======
+import {Component, OnInit, Output} from '@angular/core';
+import {EventEmitter} from "protractor";
+>>>>>>> 1
 
 @Component({
   selector: 'bg-game-control',
@@ -6,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-control.component.scss']
 })
 export class GameControlComponent implements OnInit {
-  @Output() count = new EventEmitter<number>();
+  @Output() onCountInc = new EventEmitter<number>();
   interval: any;
   lastEmittedNumber = 0;
 
@@ -16,7 +21,7 @@ export class GameControlComponent implements OnInit {
   }
 
   onStart(){
-      this.interval = setInterval(() => this.count.emit(this.lastEmittedNumber++), 1000);
+      this.interval = setInterval(() => this.onCountInc.emit(this.lastEmittedNumber++), 1000);
   }
 
   onEnd(){
