@@ -8,7 +8,7 @@ import {CounterService} from "../services/counter.service";
 })
 export class CounterComponent implements OnInit {
 
-  constructor(private counterService: CounterService) { }
+  constructor(public counterService: CounterService) { }
 
   ngOnInit(): void {
   }
