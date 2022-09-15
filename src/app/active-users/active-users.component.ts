@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {ChangeUserLocationService} from "../changeUserLocation.service";
 
 @Component({
   selector: 'bg-active-users',
@@ -6,17 +7,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./active-users.component.scss']
 })
 export class ActiveUsersComponent implements OnInit {
-  @Input() users: string[];
+  users: string[];
 
-  @Output() userSetToInactive = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private changeUserLocation: ChangeUserLocationService) { }
 
   ngOnInit(): void {
+    this.users=this.changeUserLocation.activeUsers;
   }
 
   changeStatus(id: number) {
-    this.userSetToInactive.emit(id);
+    this.changeUserLocation.onSetToInactive(id);
   }
 
 }
