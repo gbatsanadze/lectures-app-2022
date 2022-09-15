@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'bg-root',
@@ -6,10 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lectures-app';
-  numbers = [];
+  title = new EventEmitter<number>();
+  evenArray = [];
+  oddArray = [];
 
-  onCount(nextNumber) {
-    this.numbers.push(nextNumber);
+  onCounter(num: number) {
+    if (num % 2 === 0) {
+      this.oddArray.push(num);
+    } else {
+      this.evenArray.push(num);
+    }
   }
 }

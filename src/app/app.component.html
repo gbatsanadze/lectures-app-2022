@@ -13,8 +13,9 @@
   <!-- TODO: წაშალეთ ეს კომენტარი და ამის ადგილას ჩასვით თქვენი კომპონენტები -->
 </div>
 
-<bg-game-control (count)="onCount($event)"></bg-game-control>
-<div *ngFor="let number of numbers;">
-  <bg-odd *ngIf="number % 2">{{ number }}</bg-odd>
-  <bg-even *ngIf="!(number % 2)">{{ number }}</bg-even>
+
+<div>
+<bg-game-control (counterIncreased)="onCounter($event)"></bg-game-control>
+<bg-even *ngFor="let even of evenArray" [num]="even"></bg-even>
+<bg-odd *ngFor="let odd of oddArray" [num]="odd"></bg-odd>
 </div>
