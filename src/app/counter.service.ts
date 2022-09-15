@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 
 @Injectable({ providedIn: 'root'})
 export class CounterService{
@@ -7,7 +7,7 @@ export class CounterService{
 
   count(){
     this.counter++;
-    this.showCounter=true;
-    setTimeout(()=> this.showCounter=false, 2000);
+    this.showCounter = true;
+    setTimeout(() => this.showCounter = false, 2000);
   }
 }
