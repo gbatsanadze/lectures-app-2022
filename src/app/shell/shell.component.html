@@ -1,0 +1,18 @@
+<div class="ui form">
+  <div class="field">
+    <label>Username: </label>
+    <input type="text" [(ngModel)]="username">
+    <p>{{username}}</p>
+  </div>
+</div>
+<button class="ui button" [disabled]="!username" (click)="deleteUsername()">Delete Username</button>
+<!--<hr>-->
+<button class="ui button" (click)="onClick()">
+  <span *ngIf="show">Hide</span>
+  <span *ngIf="!show">Show</span>
+</button>
+<p *ngIf="show">Test</p>
+<p [ngStyle]="{backgroundColor: count >= 5 ? 'blue' : 'transparent'}"
+   [ngClass]="{countText: count >= 7}">
+  {{count}}
+</p>
