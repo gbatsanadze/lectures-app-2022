@@ -1,0 +1,14 @@
+<form class="ui forms">
+  <label>Input username    </label>
+  <input  type="text"  (input)="getUserName($event)" >
+  <button class="ui button"
+          [disabled]="!allowButtonClick"
+          (click)="addUser()">Add User</button>
+  <p *ngIf="userName!==''">username: {{userName}} </p>
+  <br/>
+</form>
+<hr>
+<button class="ui button"
+        (click)="dissapear()">Add</button>
+<p *ngIf="allowAddButtonClick">გამაქრე</p>
+
