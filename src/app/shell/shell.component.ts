@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShellComponent implements OnInit {
   userName =  '';
-  allowButtonClick = false;
   allowAddButtonClick = true;
+  counter = 0;
 
   constructor() { }
 
@@ -16,7 +16,8 @@ export class ShellComponent implements OnInit {
   }
 
 
-  dissapear(){
+  onButtonClick(){
     this.allowAddButtonClick = !this.allowAddButtonClick;
+    this.counter++;
   }
 }
