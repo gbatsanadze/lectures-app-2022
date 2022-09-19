@@ -8,6 +8,7 @@ import { ThirdComponent } from './third/third.component';
 import { FourthComponent } from './fourth/fourth.component';
 import { FifthComponent } from './fifth/fifth.component';
 import { AppRoutingModule } from './app-routing.module';
+import {RedirectEvenGuard} from "./redirect-even.guard";
 
 @NgModule({
   declarations: [
