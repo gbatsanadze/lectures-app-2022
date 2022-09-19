@@ -18,14 +18,14 @@ export class GameControlComponent implements OnInit {
   }
 
   startGame(){
-    this.timeout = setTimeout(() => {
+    this.timeout = setInterval(() => {
                           this.i++;
                           this.throwNumber.emit(this.i);
                       }, 1000);
   }
 
   endGame(){
-    clearTimeout(this.timeout);
+    clearInterval(this.timeout);
   }
 
 }

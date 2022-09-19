@@ -11,5 +11,6 @@
     <li>ასევე კარგი იქნება თუ გასტილავთ odd და even ელემენტებს</li>
   </ol>
   <bg-game-control (throwNumber)="addElement($event)" ></bg-game-control>
-  {{number}}
+  <bg-even *ngIf="number%2 ===0" [evenNumber]="number" ></bg-even>
+  <bg-odd *ngIf="number%2!==0" [oddNumber]="number" ></bg-odd>
 </div>

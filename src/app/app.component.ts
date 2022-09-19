@@ -6,10 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  number = 0;
+  number: number;
   title = 'lectures-app';
 
   addElement(num){
     this.number = num;
   }
+
 }
