@@ -17,16 +17,26 @@ export class PopupDirective implements OnInit {
   }
 
   @HostListener('click') click(){
-    console.log(ElementRef);
-    console.log(3);
+    console.log(1);
     if (this.isOpenV) {
-      console.log(1);
+      console.log(2);
       this.renderer.removeClass(this.elementRef.nativeElement, 'open');
     } else {
-      console.log(2);
+      console.log(3);
       this.renderer.addClass(this.elementRef.nativeElement, 'open');
     }
     this.isOpenV = !this.isOpenV;
+  }
+
+
+  @HostListener('document:click') documentClick(){
+    console.log(4);
+    if (!this.isOpenV) {
+      console.log(5);
+      console.log(5);
+      this.renderer.removeClass(this.elementRef.nativeElement, 'open');
+    }
+
   }
 
 }
