@@ -13,5 +13,36 @@
     <li>ასევე შექმენით(ან გადააკეთეთ წინა ასინქრონულად) ასინქრონული ვალიდატორი, რომელიც შეამოწმებს მეილი test@test.com-ს ხომ არ უდრის</li>
     <li>submit ღილაკზე დაჭერისას კონსოლში დალოგეთ ფორმის მნისვნელობა.</li>
   </ol>
-  <!-- TODO: წაშალეთ ეს კომენტარი და ამის ადგილას ჩასვით თქვენი კომპონენტები -->
+
+  <form class="ui form" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <div class="fields">
+      <div class="nine wide field">
+        <label for="projName">პროექტის დასახელება</label>
+        <input type="text" formControlName="projectName" id="projName" >
+        <ng-container *ngIf="get('projectName').touched && get('projectName').invalid">
+          <p *ngFor="let err of errors('projectName')">{{err}}</p>
+        </ng-container>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="nine wide field">
+        <label for="email">იმეილი</label>
+        <input type="text" formControlName="email" id="email">
+        <ng-container *ngIf="get('email').touched && get('email').invalid">
+          <p *ngFor="let err of errors('email')">{{err}}</p>
+        </ng-container>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="nine wide field">
+        <label for="status">პროექტის სტატუსი</label>
+        <select formControlName="status" id="status">
+          <option>სტაბილური</option>
+          <option>კრიტიკული</option>
+          <option>დასრულებული</option>
+        </select>
+      </div>
+    </div>
+    <button class="ui orange button" type="submit"> დასრულება</button>
+  </form>
 </div>
