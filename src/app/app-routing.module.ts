@@ -5,27 +5,40 @@ import { SecondComponent } from './second/second.component';
 import { ThirdComponent } from './third/third.component';
 import { FourthComponent } from './fourth/fourth.component';
 import { FifthComponent } from './fifth/fifth.component';
+import {GuardGuard} from "./guard.guard";
+import {FifthResolverService} from "./fifth/fifth-resolver.service";
 
 const routes: Routes = [
   {
     path: 'first',
-    component: FirstComponent
+    component: FirstComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'second',
-    component: SecondComponent
+    component: SecondComponent,
+    canActivate: [GuardGuard]
+
   },
   {
     path: 'third',
-    component: ThirdComponent
+    component: ThirdComponent,
+    canActivate: [GuardGuard]
+
   },
   {
     path: 'fourth',
-    component: FourthComponent
+    component: FourthComponent,
+    canActivate: [GuardGuard]
+
   },
   {
     path: 'fifth',
-    component: FifthComponent
+    component: FifthComponent,
+    canActivate: [GuardGuard],
+    resolve: {
+      people: FifthResolverService
+    }
   },
   {
     path: '**',
