@@ -8,17 +8,10 @@ import {CounterService} from '../counter.service';
 })
 export class CounterComponent implements OnInit{
 
-  allowAddActiveClass = false;
   constructor(public counterService: CounterService) { }
 
   ngOnInit() {
   }
 
-  addActiveClass(){
-    this.allowAddActiveClass = true;
-    setInterval(() => {
-      this.allowAddActiveClass = false;
-    }, 1000);
-  }
 
 }
