@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CounterService} from '../services/counter.service';
+import {CounterService} from '../counter.service';
 
 @Component({
   selector: 'bg-counter',
@@ -8,15 +8,17 @@ import {CounterService} from '../services/counter.service';
 })
 export class CounterComponent implements OnInit{
 
-  counter = 0 ;
+  allowAddActiveClass = false;
+  constructor(public counterService: CounterService) { }
 
-  constructor(private counterService: CounterService) { }
-
-  ngOnInit(): void {
-    this.counter = this.counterService.counter;
-    console.log(1);
-    console.log(1);
+  ngOnInit() {
   }
 
+  addActiveClass(){
+    this.allowAddActiveClass = true;
+    setInterval(() => {
+      this.allowAddActiveClass = false;
+    }, 1000);
+  }
 
 }

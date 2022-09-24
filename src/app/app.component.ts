@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {UserStatusChangeService} from './services/user-status-change.service';
-import {CounterService} from './services/counter.service';
+import {UserStatusChangeService} from './user-status-change.service';
+import {CounterService} from './counter.service';
 
 @Component({
   selector: 'bg-root',
