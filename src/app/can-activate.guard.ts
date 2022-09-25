@@ -15,16 +15,13 @@ import {AppRoutingModule} from './app-routing.module';
 })
 export class CanActivateGuard implements CanActivate {
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private router: Router){
+  constructor(private router: Router){
 
   }
   canActivate(
-    next: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(this.activatedRoute.url[0].path);
-    if (this.activatedRoute.url[0].path.length % 2){
-      console.log(2);
+    if (route.url[0].path.length % 2 === 0){
       this.router.navigate(['/fifth']);
     }
     return true;
