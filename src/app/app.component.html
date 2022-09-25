@@ -14,4 +14,40 @@
     <li>submit ღილაკზე დაჭერისას კონსოლში დალოგეთ ფორმის მნისვნელობა.</li>
   </ol>
   <!-- TODO: წაშალეთ ეს კომენტარი და ამის ადგილას ჩასვით თქვენი კომპონენტები -->
+  <div class="ui container">
+    <form class="ui form" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+      <div class="fields">
+        <div class="field">
+          <label for="projectname">პროექტის სახელი</label>
+          <input type="text" id="projectname" formControlName="projectName">
+          <p *ngIf="projectForm.get('projectName').invalid && projectForm.get('projectName').touched">
+            შეიყვანეთ პროექტის სახელი</p>
+          <p *ngIf="projectForm.get('projectName').errors.nameIsForbidden">
+            ამ სახელის გამოყენება აკრძალულია</p>
+
+        </div>
+      </div>
+
+      <div class="fields">
+        <div class="field">
+          <label for="email">მეილი</label>
+          <input type="text" id="email" formControlName="mail">
+          <p *ngIf="projectForm.get('mail').invalid && projectForm.get('mail').touched">
+            შეიყვანეთ სწორი მეილი</p>
+        </div>
+      </div>
+
+      <div class="fields">
+        <div class="field" *ngFor="let status of statuses">
+          <div class="ui radio checkbox">
+            <input type="radio" [value]="status" formControlName="status">
+            <label>{{status}}</label>
+          </div>
+        </div>
+      </div>
+      <p *ngIf="projectForm.invalid">შეიყვანეთ სწორი მონაცემები</p>
+      <button class="ui orange button" type="submit">შენახვა</button>
+    </form>
+
+  </div>
 </div>
