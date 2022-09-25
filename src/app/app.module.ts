@@ -8,6 +8,8 @@ import { ThirdComponent } from './third/third.component';
 import { FourthComponent } from './fourth/fourth.component';
 import { FifthComponent } from './fifth/fifth.component';
 import { AppRoutingModule } from './app-routing.module';
+import {PeopleResolver} from "./people-resolver.service";
+import {FifthService} from "./fifth/fifth.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [FifthService, PeopleResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
