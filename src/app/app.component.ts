@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {BgValidators} from "./bg-validators";
+import {BgValidators} from './bg-validators';
 
 @Component({
   selector: 'bg-root',
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.projectForm = new FormGroup({
       projectName: new FormControl(undefined, [BgValidators.required, this.forbiddenNamesValidator.bind(this)]),
-      mail: new FormControl(undefined, [BgValidators.required, BgValidators.email]),
+      mail: new FormControl(undefined, [BgValidators.required, BgValidators.email,  BgValidators.emailValidator]),
       status: new FormControl(undefined)
     });
   }

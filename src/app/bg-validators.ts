@@ -1,5 +1,4 @@
-import {Validators} from '@angular/forms';
-import {Observable} from "rxjs";
+import {FormControl, Validators} from '@angular/forms';
 
 export class BgValidators extends Validators{
 
@@ -11,8 +10,11 @@ export class BgValidators extends Validators{
     return super.email(control) ? { required: 'გთხოვთ შეიყვანოთ სწორი მეილი' } : undefined;
   }
 
-  static forbiddenMails(control){
-   return control.value === 'test@test.com' ? {required: 'ასეთი მეილის გამოყენება აკრძალულია'} : undefined;
+
+  static emailValidator(control: FormControl) {
+    if (control.value && control.value.toLowerCase() === 'test@test.com') {
+      return { projectName: 'პროექტის სახელი არ შეიძლება იყოს test@test.com' };
+    }
   }
 
 }
