@@ -8,7 +8,7 @@ import { ThirdComponent } from './third/third.component';
 import { FourthComponent } from './fourth/fourth.component';
 import { FifthComponent } from './fifth/fifth.component';
 import { AppRoutingModule } from './app-routing.module';
-import {PeopleResolver} from "./people-resolver.service";
+import {PeopleResolver} from "./fifth/people-resolver.service";
 import {FifthService} from "./fifth/fifth.service";
 
 @NgModule({

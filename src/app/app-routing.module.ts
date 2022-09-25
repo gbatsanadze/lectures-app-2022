@@ -6,7 +6,7 @@ import { ThirdComponent } from './third/third.component';
 import { FourthComponent } from './fourth/fourth.component';
 import { FifthComponent } from './fifth/fifth.component';
 import {CanActivateGuard} from './can-activate.guard';
-import {PeopleResolver} from './people-resolver.service';
+import {PeopleResolver} from './fifth/people-resolver.service';
 
 const routes: Routes = [
   {
@@ -32,9 +32,9 @@ const routes: Routes = [
   {
     path: 'fifth',
     component: FifthComponent,
-    resolve: [
+    resolve:
       {people: PeopleResolver}
-    ]
+
   },
   {
     path: '**',
