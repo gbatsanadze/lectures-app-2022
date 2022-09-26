@@ -23,7 +23,7 @@
   <div class="ui segments">
     <div class="ui segment" *ngFor="let account of shouldFilter ? (accounts | filter:filterText:'owner') : accounts">
       {{ account.owner | shorten:7 }} |
-      {{ account.status | uppercase }} |
+      {{ account.status | uppercase | reversal}} |
       {{ account.createdAt | date:'fullDate' | uppercase }}
     </div>
   </div>
