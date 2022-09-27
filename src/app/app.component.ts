@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {FormGroup, FormControl} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {Observable, Subscription} from 'rxjs';
 
-import { Validators } from './validators';
-import { PostsService } from './posts.service';
+import {Validators} from './validators';
+import {PostsService} from './posts.service';
 
 @Component({
   selector: 'bg-root',
@@ -18,7 +18,8 @@ export class AppComponent implements OnInit, OnDestroy {
   error;
   errorSubscription: Subscription;
 
-  constructor(private http: HttpClient, private postsService: PostsService) {}
+  constructor(private http: HttpClient, private postsService: PostsService) {
+  }
 
   ngOnInit() {
     this.initForm();
@@ -43,6 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   fetchPosts() {
     // Fetch posts from posts service and also use this.loader operator
+    this.postsService.fetchPosts().pipe(obs => this.loader(obs)).subscribe(resp => this.posts = resp);
   }
 
   onDeletePost(id) {
