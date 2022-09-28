@@ -11,8 +11,8 @@ import { map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit, OnDestroy{
   showCongratulations = false;
-  subscription: Subscription;
-  subscription2: Subscription;
+  timerSubscription: Subscription;
+  textSubscription: Subscription;
 
   constructor(private seminarService: SeminarService) {}
 
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy{
       }, num);
     });
 
-    this.subscription = myTimeout(5000).pipe(
+    this.timerSubscription = myTimeout(5000).pipe(
       map((data) => {
         return 'ფუნქციის გამოძახება მოხდა ' + data + ' მილი წამის შემდეგ';
       })
@@ -36,14 +36,14 @@ export class AppComponent implements OnInit, OnDestroy{
       console.log(value);
     } );
 
-    this.subscription2 = this.seminarService.subject.subscribe(value => {
+    this.textSubscription = this.seminarService.subject.subscribe(value => {
       this.showCongratulations = value;
     });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-    this.subscription2.unsubscribe();
+    this.timerSubscription.unsubscribe();
+    this.textSubscription.unsubscribe();
   }
 
 }
