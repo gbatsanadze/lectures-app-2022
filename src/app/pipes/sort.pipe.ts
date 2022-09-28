@@ -6,11 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SortPipe implements PipeTransform {
 
   transform(value: any[]): any[] {
-    console.log(1 );
-    console.log(value );
-    console.log(2);
-    console.log(value.sort());
-    return value.sort();
+    return value.sort((a, b) => {
+      return a.owner > b.owner ? 1 : -1;
+    });
   }
 
 }
