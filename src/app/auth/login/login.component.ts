@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Validators } from 'src/app/shared/validators';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormControl} from '@angular/forms';
+import {Validators} from 'src/app/shared/validators';
+import {AuthService} from "../../shared/auth.service";
 
 @Component({
   selector: 'bg-login',
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   error;
 
-  constructor() {}
+  constructor(private authServ: AuthService) {
+  }
 
   ngOnInit() {
     this.initForm();
@@ -19,6 +21,18 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     console.log(this.form.value);
+    if (this.form.invalid) {
+      return;
+    }
+    const username = this.form.get('username').value;
+    const password = this.form.get('password').value;
+    this.authServ.login(username, password).subscribe(resp => {
+        console.log(resp);
+      },
+      (error) => {
+      this.error = error;
+      }
+    );
   }
 
   get(controlName) {
