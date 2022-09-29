@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.initForm();
-    this.fetchPosts();
+    this.onFetchPosts();
 
     this.errorSubscription = this.postsService.error.subscribe(err => {
       this.error = err;
@@ -37,8 +37,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.postsService.createPost(this.form.value.title, this.form.value.content);
   }
 
+
   onFetchPosts() {
-    this.fetchPosts();
+    this.postsService.fetchPosts().pipe(obs => this.loader(obs)).subscribe((posts) => {
+      this.posts = posts;
+    });
   }
 
   fetchPosts() {
