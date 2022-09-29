@@ -8,3 +8,4 @@ export class AuthInterceptorService implements HttpInterceptor {
     return next.handle(modifiedRequest);
   }
 }
+// Authorization Bearer
