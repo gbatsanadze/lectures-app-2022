@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {AuthResponseModel} from './auth-response.model';
 import {LoaderService} from '../loader/loader.service';
 import {catchError, tap} from 'rxjs/operators';
-import {throwError, Subject} from 'rxjs';
+import {throwError, Subject, BehaviorSubject} from 'rxjs';
 import {User} from './user.model';
 import {Router} from "@angular/router";
 
@@ -12,7 +12,8 @@ import {Router} from "@angular/router";
   providedIn: 'root',
 })
 export class AuthService {
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(undefined);
+
   private timer: number;
 
   constructor(private http: HttpClient, private loaderService: LoaderService, private router: Router) {
@@ -41,7 +42,7 @@ export class AuthService {
       .pipe(
         this.loaderService.useLoader,
         catchError((err) => throwError(err.error)),
-        tap((resData) => this.handleAuth(resData))
+        tap((resData) => this.handleAuth(resData)),
       );
   }
 
@@ -60,9 +61,6 @@ export class AuthService {
     if (user.token) {
       this.user.next(user);
     }
-    this.autoLogout(
-      new Date(userData._expirationDate).getTime() - new Date().getTime()
-    );
   }
 
   handleAuth = (resData: AuthResponseModel) => {
@@ -74,7 +72,7 @@ export class AuthService {
       new Date(resData.expirationDate)
     );
     this.user.next(user);
-    localStorage.setItem('resData', JSON.stringify(user));
+    localStorage.setItem('userData', JSON.stringify(user));
     this.autoLogout(
       new Date(resData.expirationDate).getTime() - new Date().getTime()
     );
@@ -93,7 +91,7 @@ export class AuthService {
   autoLogout(expTime: number) {
     this.timer = setTimeout(() => {
       this.logout();
-    }, Math.min(60000, expTime));
+    }, Math.min(10000, expTime));
   }
 
 }
