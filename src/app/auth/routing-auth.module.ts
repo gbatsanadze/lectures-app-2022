@@ -22,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  providers: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class RoutingAuthModule {
