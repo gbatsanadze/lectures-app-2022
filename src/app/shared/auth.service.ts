@@ -36,14 +36,13 @@ export class AuthService {
     );
   }
 
-  handleAuth(resData: AuthResponseModel){
-    const user = new User(
+  handleAuth = (resData: AuthResponseModel) => {
+    this.user.next(new User(
       resData.token,
       new Date(resData.expirationDate),
       resData.name,
       resData.username,
       resData.image
-    );
-    this.user.next(user);
+    ));
   }
 }
