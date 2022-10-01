@@ -12,12 +12,8 @@ export class AppComponent  implements  OnInit{
   constructor(private authService: AuthService) {
   }
   ngOnInit(): void {
-    console.log('nldsnvls');
-
-    this.authService.user.subscribe( (userData) => {
-      console.log(userData.username);
+    this.authService.user.subscribe( () => {
       this.isUserLogin = true;
-      console.log(this.isUserLogin + 'jskafkja');
     });
   }
 
