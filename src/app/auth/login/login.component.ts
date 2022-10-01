@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from 'src/app/shared/validators';
+import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../../shared/auth.service";
 
 @Component({
   selector: 'bg-login',
@@ -10,15 +12,38 @@ import { Validators } from 'src/app/shared/validators';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   error;
+  @Output() isUserLogin = new EventEmitter<boolean>();
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.initForm();
   }
 
+
   onLogin() {
-    console.log(this.form.value);
+    if (this.form.invalid) {
+      return;
+    }
+    const username = this.get('username').value;
+    const password = this.get('password').value;
+    this.authService.login(username, password).subscribe(
+      resData => {
+        console.log(resData);
+      },
+      error => {
+        this.error = error;
+      }
+    );
+    console.log(12);
+
+    this.authService.user.subscribe( (userData) => {
+      console.log(userData.username);
+      this.isUserLogin.emit(true);
+      console.log(this.isUserLogin + 'jskafkja');
+    });
+
+    this.form.reset();
   }
 
   get(controlName) {
