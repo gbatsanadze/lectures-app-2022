@@ -12,7 +12,6 @@ import {AuthService} from "../../shared/auth.service";
 export class LoginComponent implements OnInit {
   form: FormGroup;
   error;
-  @Output() isUserLogin = new EventEmitter<boolean>();
 
   constructor(private authService: AuthService) {}
 
@@ -35,13 +34,6 @@ export class LoginComponent implements OnInit {
         this.error = error;
       }
     );
-    console.log(12);
-
-    this.authService.user.subscribe( (userData) => {
-      console.log(userData.username);
-      this.isUserLogin.emit(true);
-      console.log(this.isUserLogin + 'jskafkja');
-    });
 
     this.form.reset();
   }
